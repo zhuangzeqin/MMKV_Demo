@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //auto-service 是由 Google 开源的注解注册处理器
+    //实际上，上面两个依赖库并不是必须的，可以通过硬编码代码生成规则来替代，但还是建议使用这两个库，因为这样代码的可读性会更高，且能提高开发效率
+    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+    //JavaPoet 是 square 开源的 Java 代码生成框架，可以很方便地通过其提供的 API 来生成指定格式（修饰符、返回值、参数、函数体等）的代码
+    implementation 'com.squareup:javapoet:1.10.0'
+    implementation project(':apt_annotation')
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
